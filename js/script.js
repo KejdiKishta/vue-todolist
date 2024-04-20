@@ -13,9 +13,9 @@
 // Bonus:
 // 1- oltre al click sul pulsante, intercettare anche il tasto ENTER per aggiungere il todo alla lista (cercate nella documentazione l'evento che vi serve per questo bonus)
 // 2- cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente ed eventuale icona (se done era uguale a false, impostare true e viceversa)
+// 3- visualizzare a fianco ad ogni item una "x": cliccando su di essa, il todo viene rimosso dalla lista
 
 //*DA FARE
-// 3- visualizzare a fianco ad ogni item una "x": cliccando su di essa, il todo viene rimosso dalla lista
 // 4- implementare la persistenza di dati tramite local storage, quindi all'avvio dell'applicazione prendere i dati salvati per renderizzarli in pagina e ad ogni cambiamento aggiornare i dati salvati.
 
 const { createApp } = Vue;
@@ -59,6 +59,10 @@ createApp({
         toggleCheck: function(index) {
             this.list[index].done = !this.list[index].done
             // console.log("ciao");
+        },
+        removeTask: function(index) {
+            this.list.splice(index, 1);
+            console.log("cancellato");
         }
     }
 }).mount("#app")

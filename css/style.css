@@ -95,6 +95,7 @@ li h3::before {
 }
 
 li {
+  display: flex;
   list-style: none;
   padding: 10px 0;
   color: #434851;
@@ -124,7 +125,7 @@ li .circle::before {
   vertical-align: middle;
 }
 
-li.done {
+li.done > p {
     text-decoration: line-through;
 }
 
@@ -172,3 +173,14 @@ li .circle.delete::before {
   background-color: #a3d116;
 }
 
+.btn-delete {
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid red;
+  color: red;
+  padding: 2px 5px;
+}
+
+li > p {
+  flex-grow: 1;
+}
