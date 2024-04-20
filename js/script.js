@@ -14,38 +14,35 @@
 // 1- oltre al click sul pulsante, intercettare anche il tasto ENTER per aggiungere il todo alla lista (cercate nella documentazione l'evento che vi serve per questo bonus)
 // 2- cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente ed eventuale icona (se done era uguale a false, impostare true e viceversa)
 // 3- visualizzare a fianco ad ogni item una "x": cliccando su di essa, il todo viene rimosso dalla lista
+// 4- implementare la persistenza di dati tramite local storage, quindi all'avvio dell'applicazione prendere i dati salvati per renderizzarli in pagina e ad ogni cambiamento aggiornare i dati salvati.
 
 //*DA FARE
-// 4- implementare la persistenza di dati tramite local storage, quindi all'avvio dell'applicazione prendere i dati salvati per renderizzarli in pagina e ad ogni cambiamento aggiornare i dati salvati.
 
 const { createApp } = Vue;
 
 createApp({
     data() {
         return {
-            list: [
-                {
-                    text: "Recruiting blog post",
-                    done: true,
-                },
-                {
-                    text: "Mobile app launch",
-                    done: true,
-                },
-                {
-                    text: "Interview John H.",
-                    done: false,
-                },
-                {
-                    text: "Summit update to mobile storefronts",
-                    done: true,
-                },
-            ],
+            list: [],
 
             newTask: {
                 text: "",
                 done: false,
             },
+            
+            jsonTasks: "",
+        }
+    },
+    created() {
+        // al caricamento della pagina cerco la chiave salvata
+        const localTasks = localStorage.getItem("list");
+        // se lo trovo (quindi !null)
+        if (localTasks !== null) {
+            // la stringa json torna un array con parse
+            this.list = JSON.parse(localTasks);
+        } else {
+            // sennò array vuoto così addTask continua a funzionare
+            this.list = [];
         }
     },
     methods: {
@@ -55,6 +52,14 @@ createApp({
             console.log(taskCopy);
             this.list.push(taskCopy);
             this.newTask.text = "";
+
+            //local storage
+            //converto la lista in una stringa JSON
+            this.jsonTasks = JSON.stringify(this.list);
+            console.log(this.jsonTasks);
+            //salvo il json nel local storage
+            //                   chiave, elemento 
+            localStorage.setItem("list", this.jsonTasks);
         },
         toggleCheck: function(index) {
             this.list[index].done = !this.list[index].done
@@ -63,6 +68,15 @@ createApp({
         removeTask: function(index) {
             this.list.splice(index, 1);
             console.log("cancellato");
+
+            this.jsonTasks = JSON.stringify(this.list);
+            console.log(this.jsonTasks);
+            //salvo il json nel local storage
+            //                   chiave, elemento 
+            localStorage.setItem("list", this.jsonTasks);
+
         }
+
+
     }
 }).mount("#app")
