@@ -1,8 +1,12 @@
 // Descrizione:
 // Implementiamo una todolist.
+
+//*FATTO
 // Ogni todo sarà un oggetto, formato da due proprietà:
 // - text, una stringa che indica il testo del todo
 // - done, un booleano (true/false) che indica se il todo è stato fatto oppure no
+
+//*DA FARE
 // MILESTONE 1
 // Stampare all'interno di una lista, un item per ogni todo.
 // Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.
@@ -19,6 +23,24 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            list: [
+                {
+                    text: "Recruiting blog post",
+                    done: true,
+                },
+                {
+                    text: "Mobile app launch",
+                    done: true,
+                },
+                {
+                    text: "Interview John H.",
+                    done: false,
+                },
+                {
+                    text: "Summit update to mobile storefronts",
+                    done: true,
+                },
+            ]
 
         }
     },
