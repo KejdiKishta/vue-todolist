@@ -29,8 +29,9 @@
         </div>
         <div class="tasks">
               <ul class="inner-list">
-                <li :class="{'done': itemList.done}" v-for="itemList in list">
-                  <span class="circle" :class="itemList.done ? 'checked' : 'delete'"></span>{{ itemList.text }}
+                <li :class="{'done': itemList.done}" v-for="(itemList, index) in list" @click="toggleCheck(index)">
+                  <!-- @click="this.list[index].done = !this.list[index].done" -->
+                  <span class="circle" :class="itemList.done ? 'checked' : 'delete'" ></span>{{ itemList.text }}
                 </li>
               </ul>
             </li>
