@@ -10,15 +10,15 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #fff;
+  background-color: orangered;
 }
 
 .container {
   max-width: 42rem;
   margin: 0 auto;
   border-radius: 5px;
-  background-color: #edf2f7;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: orange;
+  box-shadow: 0 10px 40px -3px rgba(0, 0, 0, 0.1);
 }
 
 .btn {
@@ -31,8 +31,8 @@ body {
 }
 
 .btn-filled {
-  border: 1px solid #14aaf5;
-  background-color: #14aaf5;
+  border: 1px solid orangered;
+  background-color: orangered;
   color: white;
 }
 
@@ -47,7 +47,7 @@ header {
   height: 70px;
   padding: 10px 20px;
   margin-bottom: 40px;
-  background-color: #edf2f7;
+  background-color: orange;
   text-align: center;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
@@ -74,6 +74,7 @@ header {
   font-size: 16px;
   width: 50%;
   padding: 8px;
+  margin-right: 10px;
   border-radius: 5px;
   border: 1px solid #c4cbd0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -96,6 +97,7 @@ li h3::before {
 
 li {
   display: flex;
+  gap: 5px;
   list-style: none;
   padding: 10px 0;
   color: #434851;
@@ -178,9 +180,24 @@ li .circle.delete::before {
   border-radius: 50%;
   border: 1px solid red;
   color: red;
-  padding: 2px 5px;
+  padding: 4px 5px;
+  cursor: pointer;
 }
 
-li > p {
+.btn-modifie {
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid blue;
+  color: blue;
+  padding: 4px 5px;
+  cursor: pointer;
+}
+
+li > div {
   flex-grow: 1;
+  cursor: pointer;
+}
+
+li input {
+  padding: 3px;
 }

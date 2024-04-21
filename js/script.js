@@ -31,13 +31,17 @@ createApp({
             },
             
             jsonTasks: "",
+
+            modifie: false,
+
+            modifieTask: "",
         }
     },
     created() {
         // al caricamento della pagina cerco la chiave salvata
         const localTasks = localStorage.getItem("list");
         // se lo trovo (quindi !null)
-        if (localTasks !== null) {
+        if (localTasks !== null && localTasks !== "") {
             // la stringa json torna un array con parse
             this.list = JSON.parse(localTasks);
         } else {
@@ -68,15 +72,20 @@ createApp({
         removeTask: function(index) {
             this.list.splice(index, 1);
             console.log("cancellato");
-
             this.jsonTasks = JSON.stringify(this.list);
             console.log(this.jsonTasks);
             //salvo il json nel local storage
             //                   chiave, elemento 
             localStorage.setItem("list", this.jsonTasks);
+        },
+        toggleMod: function(index) {
+            this.modifie = !this.modifie
+        },
+        taskMod: function() {
+            this.modifie= false;
 
+            this.jsonTasks = JSON.stringify(this.list);
+            localStorage.setItem("list", this.jsonTasks);
         }
-
-
     }
 }).mount("#app")
